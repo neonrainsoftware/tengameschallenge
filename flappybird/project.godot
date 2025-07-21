@@ -14,3 +14,7 @@ config/name="flappybird"
 run/main_scene="uid://btwubcc52qvw4"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
+
+[autoload]
+
+Globalvars="*res://scripts/globalvars.gd"

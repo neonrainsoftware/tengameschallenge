@@ -1,4 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://bovys2obttnd2"]
+[gd_scene load_steps=7 format=3 uid="uid://bovys2obttnd2"]
+
+[ext_resource type="Script" uid="uid://c0lmo1k0k7q44" path="res://scripts/score_zone.gd" id="1_k8yae"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_oibyq"]
 size = Vector2(50.0227, 381.475)
@@ -6,19 +8,73 @@ size = Vector2(50.0227, 381.475)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_k8yae"]
 size = Vector2(50, 268)
 
+[sub_resource type="Animation" id="Animation_cno7v"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../..:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_oibyq"]
+resource_name = "movement"
+length = 8.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../..:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 7.06667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(-1600, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_gdp5e"]
+_data = {
+&"RESET": SubResource("Animation_cno7v"),
+&"movement": SubResource("Animation_oibyq")
+}
+
 [node name="Movingobstacle" type="Node2D"]
+position = Vector2(1420, 0)
 
 [node name="TopHalf" type="AnimatableBody2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TopHalf"]
 position = Vector2(25.0091, -1.08346)
-rotation = -0.00214941
 scale = Vector2(1.00091, 1.00094)
 shape = SubResource("RectangleShape2D_oibyq")
 
 [node name="ColorRect" type="ColorRect" parent="TopHalf"]
 offset_right = 50.0
 offset_bottom = 190.0
+metadata/_edit_use_anchors_ = true
+
+[node name="ScoreZone" type="Area2D" parent="TopHalf"]
+position = Vector2(0, 190)
+script = ExtResource("1_k8yae")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TopHalf/ScoreZone"]
+position = Vector2(25, 134)
+shape = SubResource("RectangleShape2D_k8yae")
+debug_color = Color(0.757758, 0.409833, 0.524446, 0.42)
+
+[node name="TopHalfAnimation" type="AnimationPlayer" parent="TopHalf"]
+root_node = NodePath("../ScoreZone/CollisionShape2D")
+libraries = {
+&"": SubResource("AnimationLibrary_gdp5e")
+}
 
 [node name="BottomHalf" type="AnimatableBody2D" parent="."]
 
@@ -26,6 +82,7 @@ offset_bottom = 190.0
 offset_top = 458.0
 offset_right = 50.0
 offset_bottom = 648.0
+metadata/_edit_use_anchors_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BottomHalf"]
 position = Vector2(25, 648)
@@ -33,10 +90,6 @@ rotation = -0.00214941
 scale = Vector2(1.00091, 1.00094)
 shape = SubResource("RectangleShape2D_oibyq")
 
-[node name="ScoreZone" type="Area2D" parent="."]
-position = Vector2(0, 190)
+[node name="AnimationPlayer" type="AnimationPlayer" parent="BottomHalf"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ScoreZone"]
-position = Vector2(25, 134)
-shape = SubResource("RectangleShape2D_k8yae")
-debug_color = Color(0.757758, 0.409833, 0.524446, 0.42)
+[connection signal="body_entered" from="TopHalf/ScoreZone" to="TopHalf/ScoreZone" method="_on_body_entered"]

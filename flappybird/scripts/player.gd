@@ -25,6 +25,9 @@ func _physics_process(delta: float) -> void:
 			if collision is Obstacles or collision is MovingObs:
 				on_hit()
 				is_lose = true
+				velocity.y = 0
 
 func on_hit():
 	print("you died")
+	queue_free()
+	Globalvars.emit_signal("on_lose")
