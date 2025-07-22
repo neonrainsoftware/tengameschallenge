@@ -1,7 +1,7 @@
 extends CharacterBody2D
 class_name Player
 
-var jump_velocity : float = 650.0
+var jump_velocity : float = 300.0
 const GRAVITY : float = 500.0
 var temp_gravity : float = 0.0
 var is_lose: bool = false
@@ -19,6 +19,8 @@ func _physics_process(delta: float) -> void:
 			if position.y >= -300.0: 
 				velocity.y -= jump_velocity
 				temp_gravity = 0.0
+			else:
+				velocity.y = 0.0
 		var collider = move_and_collide(velocity * delta)
 		if collider:
 			var collision = collider.get_collider()

@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://bovys2obttnd2"]
 
-[ext_resource type="Script" uid="uid://c0lmo1k0k7q44" path="res://scripts/score_zone.gd" id="1_k8yae"]
+[ext_resource type="Script" uid="uid://c0lmo1k0k7q44" path="res://scripts/score_zone.gd" id="1_xdxr3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_oibyq"]
 size = Vector2(50.0227, 381.475)
@@ -63,7 +63,7 @@ metadata/_edit_use_anchors_ = true
 
 [node name="ScoreZone" type="Area2D" parent="TopHalf"]
 position = Vector2(0, 190)
-script = ExtResource("1_k8yae")
+script = ExtResource("1_xdxr3")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TopHalf/ScoreZone"]
 position = Vector2(25, 134)
