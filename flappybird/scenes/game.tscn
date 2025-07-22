@@ -1,12 +1,17 @@
-[gd_scene load_steps=5 format=3 uid="uid://btwubcc52qvw4"]
+[gd_scene load_steps=7 format=3 uid="uid://btwubcc52qvw4"]
 
 [ext_resource type="Script" uid="uid://cdbxjcriob0sg" path="res://scripts/global.gd" id="1_lbhrr"]
 [ext_resource type="PackedScene" uid="uid://dmn6voct0r2e2" path="res://scenes/floor.tscn" id="1_uwrxv"]
 [ext_resource type="PackedScene" uid="uid://y1kh3bsy8erc" path="res://scenes/player.tscn" id="2_yqjtg"]
-[ext_resource type="PackedScene" uid="uid://vsxykdp5ruvk" path="res://scenes/movingobstaclev2.tscn" id="4_lbhrr"]
+[ext_resource type="Script" uid="uid://dq5bwamctml40" path="res://scripts/movingobstacles.gd" id="4_lbhrr"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_iywne"]
+size = Vector2(40, 214)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p57ef"]
+size = Vector2(39, 187)
 
 [node name="Game" type="Node2D"]
-position = Vector2(0, 1)
 script = ExtResource("1_lbhrr")
 
 [node name="Floor" parent="." instance=ExtResource("1_uwrxv")]
@@ -15,8 +20,35 @@ position = Vector2(0, 619)
 [node name="Player" parent="." instance=ExtResource("2_yqjtg")]
 position = Vector2(85, 302)
 
-[node name="Platforms" type="Node2D" parent="."]
-position = Vector2(0, -1)
+[node name="Platform1" type="AnimatableBody2D" parent="."]
+script = ExtResource("4_lbhrr")
 
-[node name="Movingobstacle" parent="." instance=ExtResource("4_lbhrr")]
-position = Vector2(1253, -2)
+[node name="ColorRect" type="ColorRect" parent="Platform1"]
+offset_left = 1318.0
+offset_right = 1358.0
+offset_bottom = 214.0
+
+[node name="ColorRect2" type="ColorRect" parent="Platform1"]
+offset_left = 1318.0
+offset_top = 404.0
+offset_right = 1358.0
+offset_bottom = 618.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform1"]
+position = Vector2(1338, 107)
+shape = SubResource("RectangleShape2D_iywne")
+debug_color = Color(0.989945, 0, 0.284376, 0.42)
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Platform1"]
+position = Vector2(1338, 511)
+shape = SubResource("RectangleShape2D_iywne")
+debug_color = Color(0.989945, 0, 0.284376, 0.42)
+
+[node name="Area2D" type="Area2D" parent="Platform1"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform1/Area2D"]
+position = Vector2(1338, 309)
+shape = SubResource("RectangleShape2D_p57ef")
+debug_color = Color(0.0207882, 0.650248, 0.070452, 0.42)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Platform1"]

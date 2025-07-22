@@ -7,7 +7,7 @@ var temp_gravity : float = 0.0
 var is_lose: bool = false
 
 func _ready() -> void:
-	pass
+	position = Vector2(85.0, 302.0)
 
 func _physics_process(delta: float) -> void:
 	if not is_lose and not is_on_floor():

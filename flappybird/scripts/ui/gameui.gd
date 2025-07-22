@@ -7,6 +7,7 @@ func _ready() -> void:
 
 func create_ui() -> void:
     var label : Label = Label.new()
-    label.text = "Score: 0"
+    var score : int = 0
+    label.text = str("Score: ", score)
     add_child(label)
     ui_elements["score"] = label
