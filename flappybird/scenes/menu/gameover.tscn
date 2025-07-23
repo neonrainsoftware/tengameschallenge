@@ -1,9 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://cy5cl2id3n4sf"]
+[gd_scene load_steps=2 format=3 uid="uid://ea6r231vcwg5"]
 
-[ext_resource type="Script" uid="uid://d0blerikheh7y" path="res://scripts/ui/main_menu.gd" id="1_h1rx6"]
+[ext_resource type="Script" uid="uid://cejp8wv6a577l" path="res://scripts/ui/gameover.gd" id="1_idqdu"]
 
-[node name="Mainmenu" type="Node2D"]
-script = ExtResource("1_h1rx6")
+[node name="Gameover" type="Node2D"]
+script = ExtResource("1_idqdu")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 offset_right = 1152.0
@@ -20,20 +20,27 @@ layout_mode = 2
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_font_sizes/font_size = 100
-text = "Flappy Bird"
+text = "Game Over"
+
+[node name="Score" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "Score"
+horizontal_alignment = 1
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="PlayButton" type="Button" parent="MarginContainer/VBoxContainer/VBoxContainer2"]
+[node name="RetryButton" type="Button" parent="MarginContainer/VBoxContainer/VBoxContainer2"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 50
-text = "Play"
+text = "Retry
+"
 
 [node name="QuitButton" type="Button" parent="MarginContainer/VBoxContainer/VBoxContainer2"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 50
 text = "Quit"
 
-[connection signal="pressed" from="MarginContainer/VBoxContainer/VBoxContainer2/PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/VBoxContainer2/RetryButton" to="." method="_on_retry_button_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/VBoxContainer2/QuitButton" to="." method="_on_quit_button_pressed"]

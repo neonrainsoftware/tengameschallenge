@@ -1,6 +1,7 @@
 extends Node
 
 var packedObs = preload("res://scenes/platforms/movingobstaclev2.tscn")
+var game_over_scn = preload("res://scenes/menu/gameover.tscn")
 var score : int = 0
 var ui_manager 
 var is_lost : bool = false
@@ -42,7 +43,8 @@ func add_score() -> void:
 
 func game_over() -> void:
 	is_lost = true
-	pass
+	var game_over_screen = game_over_scn.instantiate()
+	add_child(game_over_screen)
 
 func decrement_count():
 	obstacle_count -= 1
