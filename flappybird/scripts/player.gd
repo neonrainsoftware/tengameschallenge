@@ -1,7 +1,7 @@
 extends CharacterBody2D
 class_name Player
 
-var jump_velocity : float = 300.0
+var jump_velocity : float = 400.0
 const GRAVITY : float = 500.0
 var temp_gravity : float = 0.0
 var jump_timer : float = 0.5

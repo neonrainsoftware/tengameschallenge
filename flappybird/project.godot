@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="flappybird"
-run/main_scene="uid://btwubcc52qvw4"
+run/main_scene="uid://cy5cl2id3n4sf"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 

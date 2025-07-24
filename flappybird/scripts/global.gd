@@ -1,6 +1,11 @@
 extends Node
 
-var packedObs = preload("res://scenes/platforms/movingobstaclev2.tscn")
+var packed_scenes : Array = [
+	preload("res://scenes/platforms/movingobstaclev2.tscn"),
+	preload("res://scenes/platforms/movingobstaclev3.tscn"),
+	preload("res://scenes/platforms/movingobstaclev4.tscn"),
+	preload("res://scenes/platforms/movingobstaclev5.tscn")
+]
 var game_over_scn = preload("res://scenes/menu/gameover.tscn")
 var score : int = 0
 var ui_manager 
@@ -28,15 +33,16 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	time_elapsed += delta
 	if not is_lost and obstacle_count <= 5:
-		if time_elapsed >= 1.0:
+		if time_elapsed >= 1.5:
 			spawn_obstacle()
 			obstacle_count += 1
 			time_elapsed = 0.0
 
 func spawn_obstacle() -> void:
-	var obs : Node = packedObs.instantiate()
-	add_child(obs)
-	obs.position = Vector2(1400.0, 0.0)
+	randomize()
+	var rand_scene : Node = packed_scenes[randi() % packed_scenes.size()].instantiate()
+	add_child(rand_scene)
+	rand_scene.position = Vector2(1400.0, 0.0)
 
 func add_score() -> void:
 	score += 1
