@@ -14,6 +14,7 @@ func _ready() -> void:
 	Globalvars.connect("on_scoring", add_score)
 	Globalvars.connect("on_lose", game_over)
 	Globalvars.connect("on_destroy", decrement_count)
+	Globalvars.connect("on_retry", retry_game)
 	
 	# loading UI
 	ui_manager = load("res://scripts/ui/gameui.gd").new()
@@ -44,7 +45,11 @@ func add_score() -> void:
 func game_over() -> void:
 	is_lost = true
 	var game_over_screen = game_over_scn.instantiate()
+	game_over_screen.get_node("MarginContainer/VBoxContainer/Score").text = str("Score: ", score)
 	add_child(game_over_screen)
 
 func decrement_count():
 	obstacle_count -= 1
+
+func retry_game() -> void:
+	get_tree().reload_current_scene()
