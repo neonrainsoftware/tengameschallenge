@@ -1,9 +1,12 @@
-[gd_scene load_steps=2 format=3 uid="uid://bnup2yka2t5aa"]
+[gd_scene load_steps=3 format=3 uid="uid://bnup2yka2t5aa"]
+
+[ext_resource type="Script" uid="uid://mquwac8jw1bi" path="res://scripts/game_logic/brick.gd" id="1_w6eia"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p647q"]
 size = Vector2(53, 20)
 
 [node name="Brick" type="Node2D"]
+script = ExtResource("1_w6eia")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 
@@ -11,6 +14,7 @@ size = Vector2(53, 20)
 position = Vector2(26.5, 10)
 shape = SubResource("RectangleShape2D_p647q")
 
-[node name="ColorRect" type="ColorRect" parent="StaticBody2D"]
+[node name="BrickColor" type="ColorRect" parent="StaticBody2D"]
 offset_right = 53.0
 offset_bottom = 20.0
+color = Color(0, 1, 0, 1)
