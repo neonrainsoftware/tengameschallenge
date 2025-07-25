@@ -14,3 +14,7 @@ config/name="breakout"
 run/main_scene="uid://bbjv41tvicrt6"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
+
+[autoload]
+
+Signals="*res://scripts/game_logic/signals.gd"
