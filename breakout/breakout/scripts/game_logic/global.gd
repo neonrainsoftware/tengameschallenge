@@ -18,6 +18,9 @@ func _ready() -> void:
     var ball : Node = ball_manager.instantiate()
     add_child(ball)
 
+    if Input.get_mouse_mode() == Input.MOUSE_MODE_VISIBLE:
+        Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+
 func _process(delta: float) -> void:
     pass
 
@@ -25,7 +28,8 @@ func victory_screen() -> void:
     pass
 
 func defeat_screen() -> void:
-    pass
+    if Input.get_mouse_mode() != Input.MOUSE_MODE_VISIBLE:
+        Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 
 # make sure this works with different levels
 func retry_game() -> void:
