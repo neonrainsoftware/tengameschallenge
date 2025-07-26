@@ -14,9 +14,9 @@ func _ready() -> void:
 	# var player : Node = player_manager.instantiate()
 	# add_child(player)
 
-	var ball_manager : Resource = load("res://scenes/game_scenes/ball.tscn")
-	var ball : Node = ball_manager.instantiate()
-	add_child(ball)
+	# var ball_manager : Resource = load("res://scenes/game_scenes/ball.tscn")
+	# var ball : Node = ball_manager.instantiate()
+	# add_child(ball)
 
 	if Input.get_mouse_mode() == Input.MOUSE_MODE_VISIBLE:
 		Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
