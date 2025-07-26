@@ -1,20 +1,21 @@
 extends Node
 
-var brick_lives : int = 3
+enum BrickState {DEFAULT, LDAMAGE, HDAMAGE}
+var currbrickstate : BrickState
 @onready var color_brick : int = 3
 
 func _ready() -> void:
     Signals.connect("on_brick_hit", change_brick_health)
 
-    brick_lives = 3
+    currbrickstate = BrickState.DEFAULT
 
 func _process(delta: float) -> void:
     pass
 
 func change_brick_health() -> void:
     Signals.emit_signal("on_score", 100)
-    brick_lives -= 1
-    match brick_lives:
-        2:  color_brick = 2
-        1: color_brick = 1
+    match currbrickstate:
+        BrickState.DEFAULT: currbrickstate = BrickState.LDAMAGE
+        BrickState.LDAMAGE: currbrickstate = BrickState.HDAMAGE
+        BrickState.HDAMAGE: queue_free()
         _: queue_free()

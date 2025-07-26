@@ -2,6 +2,7 @@ extends Node
 
 var player_lives : int = 3
 var player_score : int = 0
+var player_name : String
 
 func _ready() -> void:
     Signals.connect("on_score", increment_score)

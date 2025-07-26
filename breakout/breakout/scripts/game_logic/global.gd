@@ -31,6 +31,6 @@ func defeat_screen() -> void:
     if Input.get_mouse_mode() != Input.MOUSE_MODE_VISIBLE:
         Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 
-# make sure this works with different levels
+# TODO: make sure this works with different levels
 func retry_game() -> void:
     get_tree().reload_current_scene()
