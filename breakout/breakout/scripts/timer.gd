@@ -12,6 +12,7 @@ func _ready() -> void:
 
 func _on_countdown_timeout() -> void:
 	timer_node.text = "Start!"
+	Signals.emit_signal("on_timer_end")
 	cooldown_flag = true
 
 func _process(delta: float) -> void:

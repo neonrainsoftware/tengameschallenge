@@ -6,22 +6,22 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_svb4t"]
 
 [node name="Ball" type="Node2D"]
-script = ExtResource("1_3cabe")
 
 [node name="Ball" type="CharacterBody2D" parent="."]
+script = ExtResource("1_3cabe")
+
+[node name="Ball2" type="Sprite2D" parent="Ball"]
+position = Vector2(10, 9.75)
+scale = Vector2(2.1, 1.95)
+texture = ExtResource("2_551ua")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="Ball/Ball2"]
+position = Vector2(0.238089, 0.128204)
+scale = Vector2(0.500001, 0.512821)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Ball"]
 position = Vector2(10, 10)
 shape = SubResource("CircleShape2D_svb4t")
 
-[node name="Sprite2D" type="Sprite2D" parent="Ball"]
-
-[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="Ball"]
-position = Vector2(10, 10)
-
-[node name="Ball2" type="Sprite2D" parent="."]
-position = Vector2(10, 9.75)
-scale = Vector2(2.1, 1.95)
-texture = ExtResource("2_551ua")
-
-[connection signal="screen_exited" from="Ball/VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
+[connection signal="screen_entered" from="Ball/Ball2/VisibleOnScreenNotifier2D" to="Ball" method="_on_visible_on_screen_notifier_2d_screen_entered"]
+[connection signal="screen_exited" from="Ball/Ball2/VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

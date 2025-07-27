@@ -8,13 +8,13 @@ size = Vector2(53, 20)
 [node name="Brick" type="Node2D"]
 script = ExtResource("1_w6eia")
 
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
+[node name="BrickBody" type="StaticBody2D" parent="." groups=["Bricks"]]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BrickBody"]
 position = Vector2(26.5, 10)
 shape = SubResource("RectangleShape2D_p647q")
 
-[node name="BrickColor" type="ColorRect" parent="StaticBody2D"]
+[node name="BrickColor" type="ColorRect" parent="BrickBody"]
 offset_right = 53.0
 offset_bottom = 20.0
 color = Color(0, 1, 0, 1)

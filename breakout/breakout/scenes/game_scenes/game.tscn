@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://bbjv41tvicrt6"]
+[gd_scene load_steps=9 format=3 uid="uid://bbjv41tvicrt6"]
 
 [ext_resource type="PackedScene" uid="uid://c1bht8qdsyu7c" path="res://scenes/game_scenes/walls.tscn" id="1_x8v6m"]
 [ext_resource type="Script" uid="uid://38lx60fev6kv" path="res://scripts/game_logic/global.gd" id="1_xxmkt"]
@@ -6,6 +6,10 @@
 [ext_resource type="PackedScene" uid="uid://dkl6cfplekan0" path="res://scenes/ui_scenes/timer.tscn" id="2_hjyhf"]
 [ext_resource type="PackedScene" uid="uid://bjs5seymgcbf2" path="res://scenes/ui_scenes/gameover.tscn" id="5_k8is6"]
 [ext_resource type="PackedScene" uid="uid://dkkxutmra328x" path="res://scenes/game_scenes/ball.tscn" id="6_pgsqd"]
+[ext_resource type="PackedScene" uid="uid://bnup2yka2t5aa" path="res://scenes/game_scenes/brick.tscn" id="7_cg2mp"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cg2mp"]
+size = Vector2(1386, 102)
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_xxmkt")
@@ -29,5 +33,90 @@ position = Vector2(540, 585)
 [node name="Gameover" parent="." instance=ExtResource("5_k8is6")]
 visible = false
 
-[node name="Ball" parent="." instance=ExtResource("6_pgsqd")]
-position = Vector2(482, 244)
+[node name="Bricks" type="Node" parent="."]
+
+[node name="Brick" parent="Bricks" instance=ExtResource("7_cg2mp")]
+position = Vector2(192, 153)
+
+[node name="Brick2" parent="Bricks" instance=ExtResource("7_cg2mp")]
+position = Vector2(305, 153)
+
+[node name="Brick3" parent="Bricks" instance=ExtResource("7_cg2mp")]
+position = Vector2(414, 154)
+
+[node name="Brick4" parent="Bricks" instance=ExtResource("7_cg2mp")]
+position = Vector2(524, 153)
+
+[node name="Brick5" parent="Bricks" instance=ExtResource("7_cg2mp")]
+position = Vector2(192, 201)
+
+[node name="Brick6" parent="Bricks" instance=ExtResource("7_cg2mp")]
+position = Vector2(305, 201)
+
+[node name="Brick7" parent="Bricks" instance=ExtResource("7_cg2mp")]
+position = Vector2(414, 202)
+
+[node name="Brick8" parent="Bricks" instance=ExtResource("7_cg2mp")]
+position = Vector2(524, 201)
+
+[node name="Brick9" parent="Bricks" instance=ExtResource("7_cg2mp")]
+position = Vector2(192, 248)
+
+[node name="Brick10" parent="Bricks" instance=ExtResource("7_cg2mp")]
+position = Vector2(305, 248)
+
+[node name="Brick11" parent="Bricks" instance=ExtResource("7_cg2mp")]
+position = Vector2(414, 249)
+
+[node name="Brick12" parent="Bricks" instance=ExtResource("7_cg2mp")]
+position = Vector2(524, 248)
+
+[node name="Brick13" parent="Bricks" instance=ExtResource("7_cg2mp")]
+position = Vector2(622, 154)
+
+[node name="Brick14" parent="Bricks" instance=ExtResource("7_cg2mp")]
+position = Vector2(735, 154)
+
+[node name="Brick15" parent="Bricks" instance=ExtResource("7_cg2mp")]
+position = Vector2(844, 155)
+
+[node name="Brick16" parent="Bricks" instance=ExtResource("7_cg2mp")]
+position = Vector2(954, 154)
+
+[node name="Brick17" parent="Bricks" instance=ExtResource("7_cg2mp")]
+position = Vector2(622, 202)
+
+[node name="Brick18" parent="Bricks" instance=ExtResource("7_cg2mp")]
+position = Vector2(735, 202)
+
+[node name="Brick19" parent="Bricks" instance=ExtResource("7_cg2mp")]
+position = Vector2(844, 203)
+
+[node name="Brick20" parent="Bricks" instance=ExtResource("7_cg2mp")]
+position = Vector2(954, 202)
+
+[node name="Brick21" parent="Bricks" instance=ExtResource("7_cg2mp")]
+position = Vector2(622, 249)
+
+[node name="Brick22" parent="Bricks" instance=ExtResource("7_cg2mp")]
+position = Vector2(735, 249)
+
+[node name="Brick23" parent="Bricks" instance=ExtResource("7_cg2mp")]
+position = Vector2(844, 250)
+
+[node name="Brick24" parent="Bricks" instance=ExtResource("7_cg2mp")]
+position = Vector2(954, 249)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(576, 324)
+
+[node name="Ball" parent="Camera2D" instance=ExtResource("6_pgsqd")]
+position = Vector2(-5, 66)
+
+[node name="DangerZone" type="StaticBody2D" parent="." groups=["DangerZone"]]
+position = Vector2(-112, 653)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DangerZone"]
+position = Vector2(684, 88)
+shape = SubResource("RectangleShape2D_cg2mp")
+debug_color = Color(0.891308, 0.311548, 0.238252, 0.42)

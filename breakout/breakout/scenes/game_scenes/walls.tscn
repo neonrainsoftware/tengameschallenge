@@ -13,37 +13,18 @@ size = Vector2(112, 841.5)
 
 [node name="StaticBody2D4" type="StaticBody2D" parent="."]
 
-[node name="ColorRect" type="ColorRect" parent="StaticBody2D4"]
-offset_left = 1142.0
-offset_top = -16.0
-offset_right = 1182.0
-offset_bottom = 631.0
-
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="StaticBody2D4"]
-position = Vector2(-47.25, 408)
+position = Vector2(-61, 364)
 shape = SubResource("RectangleShape2D_def3t")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 
-[node name="ColorRect" type="ColorRect" parent="StaticBody2D"]
-offset_left = -27.0
-offset_top = -11.0
-offset_right = 13.0
-offset_bottom = 636.0
-
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(570, -21)
+position = Vector2(570, -42)
 shape = SubResource("RectangleShape2D_yax5h")
 
 [node name="StaticBody2D3" type="StaticBody2D" parent="."]
 
-[node name="ColorRect" type="ColorRect" parent="StaticBody2D3"]
-offset_left = 1177.0
-offset_top = -18.0
-offset_right = 1217.0
-offset_bottom = 1192.0
-rotation = 1.57253
-
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="StaticBody2D3"]
-position = Vector2(1198, 395.25)
+position = Vector2(1206, 390)
 shape = SubResource("RectangleShape2D_exnah")

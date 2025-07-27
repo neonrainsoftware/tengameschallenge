@@ -1,31 +1,37 @@
 extends Node
 
 var ui_manager
+var ball_manager
 var level_manager : Array
+var player : Node
+var ball_pos : Vector2 = Vector2(-5.0, 66.0)
 
 func _ready() -> void:
 	Signals.connect("on_victory", victory_screen)
 	Signals.connect("on_defeat", defeat_screen)
+	Signals.connect("on_ball_destroy", retry_game)
 
-	# ui_manager = load("res://scripts/ui_scenes/playerui.tscn").new()
-	# add_child(ui_manager)
+	ui_manager = load("res://scenes/ui_scenes/playerui.tscn")
+	var uichild = ui_manager.instantiate()
+	add_child(uichild)
 
-	# var player_manager : Resource = load("res://scenes/game_scenes/player.tscn")
-	# var player : Node = player_manager.instantiate()
-	# add_child(player)
+	ball_manager = load("res://scenes/game_scenes/ball.tscn")
+	var ballchild = ui_manager.instantiate()
+	add_child(ballchild)
+	ballchild.position = ball_pos
 
-	# var ball_manager : Resource = load("res://scenes/game_scenes/ball.tscn")
-	# var ball : Node = ball_manager.instantiate()
-	# add_child(ball)
+	for level_brick in get_tree().get_nodes_in_group("Bricks"):
+		Signals.bricks_in_level[level_brick.get_instance_id()] = level_brick
 
 	if Input.get_mouse_mode() == Input.MOUSE_MODE_VISIBLE:
 		Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 
 func _process(delta: float) -> void:
-	pass
+	if Signals.bricks_in_level.is_empty():
+		victory_screen()
 
 func victory_screen() -> void:
-	pass
+	get_tree().change_scene_to_file("res://scenes/ui_scenes/victory.tscn")
 
 func defeat_screen() -> void:
 	if Input.get_mouse_mode() != Input.MOUSE_MODE_VISIBLE:
@@ -33,4 +39,6 @@ func defeat_screen() -> void:
 
 # TODO: make sure this works with different levels
 func retry_game() -> void:
-	get_tree().reload_current_scene()
+	var ballchild = ui_manager.instantiate()
+	add_child(ballchild)
+	ballchild.position = ball_pos
