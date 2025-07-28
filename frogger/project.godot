@@ -14,3 +14,12 @@ config/name="frogger"
 run/main_scene="uid://cwnbmaiu1ftas"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
+
+[autoload]
+
+Signals="*res://scripts/globals.gd"
+
+[display]
+
+window/size/viewport_width=700
+window/size/viewport_height=1200

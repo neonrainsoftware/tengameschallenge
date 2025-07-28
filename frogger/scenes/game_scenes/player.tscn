@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://b0uko2eyb50l7"]
+
+[ext_resource type="Script" uid="uid://dnp87cy4h5f2e" path="res://scripts/game_logic/player.gd" id="1_ppo6d"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b1rd5"]
+
+[node name="Player" type="Node2D"]
+
+[node name="PlayerCharacter" type="CharacterBody2D" parent="."]
+script = ExtResource("1_ppo6d")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerCharacter"]
+shape = SubResource("RectangleShape2D_b1rd5")
+
+[node name="Sprite2D" type="Sprite2D" parent="PlayerCharacter"]
+
+[node name="ColorRect" type="ColorRect" parent="PlayerCharacter"]
+visible = false
+offset_left = -19.0
+offset_top = -19.0
+offset_right = 21.0
+offset_bottom = 21.0
