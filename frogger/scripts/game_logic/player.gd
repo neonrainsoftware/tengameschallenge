@@ -28,3 +28,5 @@ func lose_life() -> void:
 		player_lives -= 1
 		if player_lives <= 0:
 			Signals.emit_signal("on_lose")
+		else:
+			Signals.emit_signal("on_hit")

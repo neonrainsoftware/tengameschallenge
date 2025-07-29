@@ -18,7 +18,8 @@ shape = SubResource("RectangleShape2D_y84mk")
 [node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
 visible = false
 
-[node name="Area2D" type="Area2D" parent="StaticBody2D"]
+[node name="VisionCone" type="Area2D" parent="StaticBody2D"]
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D/Area2D"]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D/VisionCone"]
+scale = Vector2(3.10954, 4.48066)
 polygon = PackedVector2Array(97, 84, 0, 0, -97, 84)
