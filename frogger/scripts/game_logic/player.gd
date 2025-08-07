@@ -9,10 +9,10 @@ var inputs : Dictionary = {
 	"ui_up": Vector2.UP,
 	"ui_down": Vector2.DOWN
 }
+var animation_speed : int = 3
+var is_moving : bool = false
 
 @onready var ray: RayCast2D = $RayCast2D
-# const SPEED : float = 500.0
-
 
 func _ready() -> void:
 	Signals.connect("on_hit", lose_life)
@@ -20,6 +20,8 @@ func _ready() -> void:
 	position += Vector2.ONE * tile_size / 2
 
 func _unhandled_input(event: InputEvent) -> void:
+	if is_moving:
+		return
 	for dir in inputs.keys():
 		if event.is_action_pressed(dir):
 			move_player(dir)
@@ -28,23 +30,12 @@ func move_player(dir: String) -> void:
 	ray.target_position = inputs[dir] * tile_size
 	ray.force_raycast_update()
 	if !ray.is_colliding():
-		position += inputs[dir] * tile_size
-
-# func _physics_process(_delta: float) -> void:
-# 	var direction : Vector2 = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
-# 	if Input.is_action_pressed("ui_right") || Input.is_action_pressed("ui_left"):
-# 		direction.y = 0
-# 	elif Input.is_action_pressed("ui_up") || Input.is_action_pressed("ui_down"):
-# 		direction.x = 0
-# 	else: 
-# 		direction = Vector2.ZERO
-
-# 	direction = direction.normalized()
-# 	velocity = (direction * SPEED)
-# 	move_and_slide()
-
-# func move_player(pos : Vector2) -> void:
-# 	$PlayerCharacter.position.x = pos.x
+		var tween : Tween = create_tween()
+		tween.tween_property(self, "position",
+			position + inputs[dir] * tile_size, 1.0 / animation_speed).set_trans(Tween.TRANS_SINE)
+		is_moving = true
+		await tween.finished
+		is_moving = false
 
 func lose_life() -> void:
 	if player_lives >= 1:
