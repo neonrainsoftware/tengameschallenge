@@ -1,0 +1,19 @@
+[gd_scene load_steps=2 format=3 uid="uid://k66eagnq24vc"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i1hvh"]
+
+[node name="Bullet" type="Node2D"]
+
+[node name="AnimatableBody2D" type="AnimatableBody2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="AnimatableBody2D"]
+visible = false
+
+[node name="ColorRect" type="ColorRect" parent="AnimatableBody2D"]
+offset_left = -11.0
+offset_top = -11.0
+offset_right = 11.0
+offset_bottom = 11.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatableBody2D"]
+shape = SubResource("RectangleShape2D_i1hvh")

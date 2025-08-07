@@ -17,8 +17,11 @@ func _physics_process(delta: float) -> void:
 
 func calculate_vision_shape() -> Array[Vector2]:
 	var new_vision_points : Array[Vector2] = []
+	var last_point = null
 
-	
+	if angle < 2 * PI:
+		new_vision_points.append(Vector2.ZERO)
+		last_point = Vector2.ZERO
 	return vision_points
 
 func check_for_player() -> bool:

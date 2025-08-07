@@ -6,17 +6,19 @@
 
 [node name="Player" type="Node2D"]
 
-[node name="PlayerCharacter" type="CharacterBody2D" parent="."]
+[node name="Area2D" type="Area2D" parent="."]
 script = ExtResource("1_ppo6d")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerCharacter"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("RectangleShape2D_b1rd5")
 
-[node name="Sprite2D" type="Sprite2D" parent="PlayerCharacter"]
-
-[node name="ColorRect" type="ColorRect" parent="PlayerCharacter"]
+[node name="Sprite2D" type="Sprite2D" parent="Area2D"]
 visible = false
+
+[node name="ColorRect" type="ColorRect" parent="Area2D"]
 offset_left = -19.0
 offset_top = -19.0
 offset_right = 21.0
 offset_bottom = 21.0
+
+[node name="RayCast2D" type="RayCast2D" parent="Area2D"]
