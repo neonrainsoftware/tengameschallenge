@@ -7,7 +7,7 @@ var time_elapsed : float = 0.0
 @export var speed : float = 0.0
 
 func _ready() -> void:
-	$Animation.play("movement")
+	$Animation.play("moving")
 
 func _process(delta: float) -> void:
 	time_elapsed += delta
