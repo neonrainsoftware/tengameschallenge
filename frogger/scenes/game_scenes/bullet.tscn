@@ -133,3 +133,6 @@ shape = SubResource("RectangleShape2D_i1hvh")
 libraries = {
 &"": SubResource("AnimationLibrary_7rswr")
 }
+
+[node name="RayCast2D" type="RayCast2D" parent="AnimatableBody2D"]
+target_position = Vector2(64, 0)
